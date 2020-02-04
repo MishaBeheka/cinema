@@ -14,4 +14,5 @@
 
         <mapping class="com.dev.cinema.model.Movie"/>
     </session-factory>
+
 </hibernate-configuration>
