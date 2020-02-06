@@ -44,7 +44,8 @@ public class Main {
         movieSessionService.findAvailableSession(movie.getId(), LocalDate.now())
                 .forEach(System.out::println);
 
-        AuthenticationService authenticationService = (AuthenticationService) injector.getInstance(AuthenticationService.class);
+        AuthenticationService authenticationService =
+                (AuthenticationService) injector.getInstance(AuthenticationService.class);
         authenticationService.register("misha@ukr.net", "101");
         System.out.println("Check LOGIN");
         System.out.println(authenticationService.login("misha@ukr.net", "101"));
