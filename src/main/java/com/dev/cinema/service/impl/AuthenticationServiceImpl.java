@@ -5,14 +5,23 @@ import com.dev.cinema.lib.Inject;
 import com.dev.cinema.model.User;
 import com.dev.cinema.service.AuthenticationService;
 import com.dev.cinema.service.UserService;
+import com.dev.cinema.util.HashUtil;
 
 public class AuthenticationServiceImpl implements AuthenticationService {
+
     @Inject
     UserService userService;
 
     @Override
     public User login(String email, String password) throws AuthenticationException {
-        return null;
+        User user = userService.findByEmail(email);
+        if (user != null) {
+            String hashPassword = HashUtil.hashSalt(password, user.getSalt());
+            if (hashPassword.equals(user.getPassword())) {
+                return user;
+            }
+        }
+        throw new AuthenticationException("Incorrect login or password ");
     }
 
     @Override
