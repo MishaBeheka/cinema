@@ -1,5 +1,6 @@
 package com.dev.cinema;
 
+import com.dev.cinema.exceptoin.AuthenticationException;
 import com.dev.cinema.lib.Injector;
 import com.dev.cinema.model.CinemaHall;
 import com.dev.cinema.model.Movie;
@@ -13,7 +14,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Main {
+    private static final Logger LOGGER = LogManager.getLogger(Main.class);
     private static Injector injector = Injector.getInstance("com.dev.cinema");
 
     public static void main(String[] args) {
@@ -48,6 +53,10 @@ public class Main {
                 (AuthenticationService) injector.getInstance(AuthenticationService.class);
         authenticationService.register("misha@ukr.net", "101");
         System.out.println("Check LOGIN");
-        System.out.println(authenticationService.login("misha@ukr.net", "101"));
+        try {
+            System.out.println(authenticationService.login("misha@ukr.net", "101"));
+        } catch (AuthenticationException e) {
+            LOGGER.error(e);
+        }
     }
 }
