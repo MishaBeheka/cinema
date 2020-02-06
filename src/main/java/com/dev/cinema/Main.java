@@ -51,6 +51,6 @@ public class Main {
         UserService userService = (UserService) injector.getInstance(UserService.class);
         userService.add(user);
         System.out.println("FIND BY EMAIL");
-        System.out.println(userService.findByEmail(user.getEmail()));
+        System.out.println(userService.findByEmail("user.getEmail())"));
     }
 }
