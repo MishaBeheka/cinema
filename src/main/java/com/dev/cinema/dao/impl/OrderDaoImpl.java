@@ -2,7 +2,6 @@ package com.dev.cinema.dao.impl;
 
 import com.dev.cinema.dao.OrderDao;
 import com.dev.cinema.exceptoin.DataProcessingException;
-import com.dev.cinema.lib.Dao;
 import com.dev.cinema.model.Order;
 import com.dev.cinema.model.User;
 import com.dev.cinema.util.HibernateUtil;
@@ -16,8 +15,9 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
-@Dao
+@Repository
 public class OrderDaoImpl implements OrderDao {
     @Override
     public Order create(Order order) {

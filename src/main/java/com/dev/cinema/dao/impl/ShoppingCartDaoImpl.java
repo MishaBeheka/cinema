@@ -2,7 +2,6 @@ package com.dev.cinema.dao.impl;
 
 import com.dev.cinema.dao.ShoppingCartDao;
 import com.dev.cinema.exceptoin.DataProcessingException;
-import com.dev.cinema.lib.Dao;
 import com.dev.cinema.model.ShoppingCart;
 import com.dev.cinema.model.Ticket;
 import com.dev.cinema.model.User;
@@ -12,8 +11,9 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
-@Dao
+@Repository
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
     @Override
     public ShoppingCart add(ShoppingCart shoppingCart) {
