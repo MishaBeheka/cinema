@@ -2,6 +2,7 @@ package com.dev.cinema.dao.impl;
 
 import com.dev.cinema.dao.MovieSessionDao;
 import com.dev.cinema.exceptoin.DataProcessingException;
+import com.dev.cinema.model.Movie;
 import com.dev.cinema.model.MovieSession;
 
 import java.time.LocalDate;
@@ -34,6 +35,15 @@ public class MovieSessionDaoImpl implements MovieSessionDao {
                 transaction.rollback();
             }
             throw new RuntimeException("Can't insert CinemaHall entity ", e);
+        }
+    }
+
+    @Override
+    public MovieSession getById(Long id) {
+        try (Session session = sessionFactory.openSession()) {
+            return session.get(MovieSession.class, id);
+        } catch (Exception e) {
+            throw new RuntimeException("Can't find MovieSession with ID " + id, e);
         }
     }
 
