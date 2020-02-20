@@ -6,7 +6,7 @@ import java.util.List;
 
 public class OrderResponseDto {
     private String orderDate;
-    private List<Ticket> tickets;
+    private List<TicketDto> tickets;
 
     public String getOrderDate() {
         return orderDate;
@@ -16,11 +16,11 @@ public class OrderResponseDto {
         this.orderDate = orderDate;
     }
 
-    public List<Ticket> getTickets() {
+    public List<TicketDto> getTickets() {
         return tickets;
     }
 
-    public void setTickets(List<Ticket> tickets) {
+    public void setTickets(List<TicketDto> tickets) {
         this.tickets = tickets;
     }
 }

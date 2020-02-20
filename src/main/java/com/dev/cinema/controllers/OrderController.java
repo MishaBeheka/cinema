@@ -2,8 +2,11 @@ package com.dev.cinema.controllers;
 
 import com.dev.cinema.dto.OrderRequestDto;
 import com.dev.cinema.dto.OrderResponseDto;
+import com.dev.cinema.dto.TicketDto;
+import com.dev.cinema.model.MovieSession;
 import com.dev.cinema.model.Order;
 import com.dev.cinema.model.ShoppingCart;
+import com.dev.cinema.model.Ticket;
 import com.dev.cinema.model.User;
 import com.dev.cinema.service.OrderService;
 import com.dev.cinema.service.ShoppingCartService;
@@ -43,7 +46,9 @@ public class OrderController {
     @GetMapping(value = "/")
     public List<OrderResponseDto> getAllOrders(@RequestParam Long userId) {
         return orderService.getOrderHistory(userService.getById(userId))
-                .stream().map(this::buildOrderResponseDto).collect(Collectors.toList());
+                .stream()
+                .map(this::buildOrderResponseDto)
+                .collect(Collectors.toList());
     }
 
     private Order buildOrder(OrderRequestDto orderRequestDto) {
@@ -55,8 +60,20 @@ public class OrderController {
 
     private OrderResponseDto buildOrderResponseDto(Order order) {
         OrderResponseDto orderResponseDto = new OrderResponseDto();
-        orderResponseDto.setTickets(order.getTickets());
+        orderResponseDto.setTickets(order.getTickets()
+        .stream()
+        .map(this::buildTicketDto)
+        .collect(Collectors.toList()));
         orderResponseDto.setOrderDate(order.getOrderDate().toString());
         return orderResponseDto;
+    }
+
+    private TicketDto buildTicketDto(Ticket ticket) {
+        MovieSession movieSession = ticket.getMovieSession();
+        TicketDto ticketDto = new TicketDto();
+        ticketDto.setMovieTitle(movieSession.getMovie().getTitle());
+        ticketDto.setShowTime(movieSession.getShowTime().toString());
+        ticketDto.setCinemaHallId(movieSession.getCinemaHall().getId());
+        return ticketDto;
     }
 }

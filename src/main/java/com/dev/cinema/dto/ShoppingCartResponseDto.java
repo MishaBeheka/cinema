@@ -1,18 +1,16 @@
 package com.dev.cinema.dto;
 
-import com.dev.cinema.model.Ticket;
-
 import java.util.List;
 
 public class ShoppingCartResponseDto {
-    private List<Ticket> tickets;
+    private List<TicketDto> tickets;
     private String userEmail;
 
-    public List<Ticket> getTickets() {
+    public List<TicketDto> getTickets() {
         return tickets;
     }
 
-    public void setTickets(List<Ticket> tickets) {
+    public void setTickets(List<TicketDto> tickets) {
         this.tickets = tickets;
     }
 
