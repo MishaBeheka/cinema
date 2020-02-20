@@ -15,10 +15,12 @@ import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/orders")
 public class OrderController {
 
     private final ShoppingCartService shoppingCartService;
@@ -33,12 +35,12 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping(value = "/orders/complete")
+    @PostMapping(value = "/complete")
     public Order completeOrder(@RequestBody OrderRequestDto orderRequestDto) {
         return buildOrder(orderRequestDto);
     }
 
-    @GetMapping(value = "/orders")
+    @GetMapping(value = "/")
     public List<OrderResponseDto> getAllOrders(@RequestParam Long userId) {
         return orderService.getOrderHistory(userService.getById(userId))
                 .stream().map(this::buildOrderResponseDto).collect(Collectors.toList());
