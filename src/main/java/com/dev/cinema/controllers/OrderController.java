@@ -43,7 +43,7 @@ public class OrderController {
         return buildOrder(orderRequestDto);
     }
 
-    @GetMapping(value = "/")
+    @GetMapping
     public List<OrderResponseDto> getAllOrders(@RequestParam Long userId) {
         return orderService.getOrderHistory(userService.getById(userId))
                 .stream()

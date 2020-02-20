@@ -43,7 +43,7 @@ public class MovieSessionController {
         return movieSessionService.add(buildMovieSession(movieSessionRequestDto));
     }
 
-    @GetMapping(value = "/all")
+    @GetMapping
     public List<MovieSessionResponseDto> getAllMovieSessions(
             @RequestParam Long id, @RequestParam String date) {
         LocalDate localDate = LocalDate.parse(date, DateTimeFormatter.BASIC_ISO_DATE);
