@@ -1,7 +1,5 @@
 package com.dev.cinema.dto;
 
-import com.dev.cinema.model.Ticket;
-
 import java.util.List;
 
 public class OrderResponseDto {
