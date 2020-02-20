@@ -1,19 +1,19 @@
 package com.dev.cinema.controllers;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import com.dev.cinema.dto.MovieResponseDto;
 import com.dev.cinema.dto.MovieSessionRequestDto;
 import com.dev.cinema.dto.MovieSessionResponseDto;
 import com.dev.cinema.model.MovieSession;
 import com.dev.cinema.service.MovieCinemaHallService;
 import com.dev.cinema.service.MovieService;
 import com.dev.cinema.service.MovieSessionService;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

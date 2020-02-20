@@ -1,11 +1,12 @@
 package com.dev.cinema.controllers;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.dev.cinema.dto.CinemaHallDto;
 import com.dev.cinema.model.CinemaHall;
 import com.dev.cinema.service.MovieCinemaHallService;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
