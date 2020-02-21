@@ -8,5 +8,7 @@ public interface MovieCinemaHallService {
 
     CinemaHall add(CinemaHall cinemaHall);
 
+    CinemaHall getById(Long id);
+
     List<CinemaHall> getAll();
 }

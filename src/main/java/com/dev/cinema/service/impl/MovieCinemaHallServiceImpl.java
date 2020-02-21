@@ -20,6 +20,11 @@ public class MovieCinemaHallServiceImpl implements MovieCinemaHallService {
     }
 
     @Override
+    public CinemaHall getById(Long id) {
+        return movieCinemaHallDao.getById(id);
+    }
+
+    @Override
     public List<CinemaHall> getAll() {
         return movieCinemaHallDao.getAll();
     }

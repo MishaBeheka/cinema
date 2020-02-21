@@ -40,6 +40,15 @@ public class MovieDaoImpl implements MovieDao {
     }
 
     @Override
+    public Movie getById(Long id) {
+        try (Session session = sessionFactory.openSession()) {
+            return session.get(Movie.class, id);
+        } catch (Exception e) {
+            throw new RuntimeException("Can't find Movie with ID " + id, e);
+        }
+    }
+
+    @Override
     public List<Movie> getAll() {
         try (Session session = sessionFactory.openSession()) {
             CriteriaQuery<Movie> criteriaQuery =
