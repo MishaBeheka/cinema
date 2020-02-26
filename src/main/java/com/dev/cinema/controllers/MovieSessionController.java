@@ -14,6 +14,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,7 +41,7 @@ public class MovieSessionController {
     }
 
     @PostMapping(value = "/add")
-    public MovieSession create(@RequestBody MovieSessionRequestDto movieSessionRequestDto) {
+    public MovieSession create(@RequestBody @Valid MovieSessionRequestDto movieSessionRequestDto) {
         return movieSessionService.add(buildMovieSession(movieSessionRequestDto));
     }
 

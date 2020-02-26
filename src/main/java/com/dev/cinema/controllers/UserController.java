@@ -4,6 +4,9 @@ import com.dev.cinema.dto.UserRequestDto;
 import com.dev.cinema.dto.UserResponseDto;
 import com.dev.cinema.model.User;
 import com.dev.cinema.service.UserService;
+
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +25,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/add")
-    public User create(@RequestBody UserRequestDto userRequestDto) {
+    public User create(@RequestBody @Valid UserRequestDto userRequestDto) {
         return userService.add(buildUser(userRequestDto));
     }
 

@@ -2,7 +2,7 @@ package com.dev.cinema.controllers;
 
 import com.dev.cinema.dto.OrderRequestDto;
 import com.dev.cinema.dto.OrderResponseDto;
-import com.dev.cinema.dto.TicketDto;
+import com.dev.cinema.dto.TicketResponseDto;
 import com.dev.cinema.model.MovieSession;
 import com.dev.cinema.model.Order;
 import com.dev.cinema.model.ShoppingCart;
@@ -68,12 +68,12 @@ public class OrderController {
         return orderResponseDto;
     }
 
-    private TicketDto buildTicketDto(Ticket ticket) {
+    private TicketResponseDto buildTicketDto(Ticket ticket) {
         MovieSession movieSession = ticket.getMovieSession();
-        TicketDto ticketDto = new TicketDto();
-        ticketDto.setMovieTitle(movieSession.getMovie().getTitle());
-        ticketDto.setShowTime(movieSession.getShowTime().toString());
-        ticketDto.setCinemaHallId(movieSession.getCinemaHall().getId());
-        return ticketDto;
+        TicketResponseDto ticketResponseDto = new TicketResponseDto();
+        ticketResponseDto.setMovieTitle(movieSession.getMovie().getTitle());
+        ticketResponseDto.setShowTime(movieSession.getShowTime().toString());
+        ticketResponseDto.setCinemaHallId(movieSession.getCinemaHall().getId());
+        return ticketResponseDto;
     }
 }
