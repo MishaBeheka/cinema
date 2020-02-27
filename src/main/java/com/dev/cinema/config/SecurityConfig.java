@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -30,11 +31,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .authorizeRequests()
+                .authorizeRequests().antMatchers("/register").permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/login").permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/cinema-halls/add").hasRole("ADMIN")
+                .and()
+                .authorizeRequests().antMatchers("/movies/add").hasRole("ADMIN")
+                .and()
+                .authorizeRequests().antMatchers("/movies").hasRole("USER")
+                .and()
+                .authorizeRequests().antMatchers("/movie-sessions/add").hasRole("USER")
+                .and()
+                .authorizeRequests().antMatchers("/orders").hasRole("USER")
+                .and()
+                .authorizeRequests().antMatchers("/shoppingCarts").hasRole("USER")
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin().disable()
-                .httpBasic();
+                .formLogin()
+                .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
     }
 }
