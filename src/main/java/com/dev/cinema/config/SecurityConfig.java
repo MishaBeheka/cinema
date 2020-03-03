@@ -1,6 +1,7 @@
 package com.dev.cinema.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -34,18 +35,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/register").permitAll()
                 .and()
                 .authorizeRequests().antMatchers("/login").permitAll()
-                .and()
-                .authorizeRequests().antMatchers("/cinema-halls/add").hasRole("ADMIN")
-                .and()
-                .authorizeRequests().antMatchers("/movies/add").hasRole("ADMIN")
-                .and()
-                .authorizeRequests().antMatchers("/movies").hasRole("USER")
-                .and()
-                .authorizeRequests().antMatchers("/movie-sessions/add").hasRole("USER")
-                .and()
-                .authorizeRequests().antMatchers("/orders").hasRole("USER")
-                .and()
-                .authorizeRequests().antMatchers("/shoppingCarts").hasRole("USER")
+                .antMatchers(HttpMethod.POST, "/cinema-halls/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/cinema-halls/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/movies/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/movies/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/movie-sessions/add").hasRole("USER")
+                .antMatchers( "/orders/**").hasRole("USER")
+                .antMatchers(HttpMethod.POST, "/shoppingCarts/**").hasRole("USER")
                 .anyRequest()
                 .authenticated()
                 .and()
