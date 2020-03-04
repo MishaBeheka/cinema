@@ -1,8 +1,11 @@
 package com.dev.cinema.dto;
 
+import javax.validation.constraints.NotEmpty;
+
 public class MovieSessionResponseDto {
     private String descriptionOfCinemaHall;
     private String titleOfMovie;
+    @NotEmpty
     private String showOfTime;
 
     public String getDescriptionOfCinemaHall() {

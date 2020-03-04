@@ -1,11 +1,13 @@
 package com.dev.cinema.controllers;
 
-import com.dev.cinema.dto.CinemaHallDto;
+import com.dev.cinema.dto.CinemaHallRequestDto;
 import com.dev.cinema.model.CinemaHall;
 import com.dev.cinema.service.MovieCinemaHallService;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,25 +26,25 @@ public class CinemaHallController {
     }
 
     @PostMapping(value = "/add")
-    public void create(@RequestBody CinemaHallDto cinemaHallDto) {
+    public void create(@RequestBody @Valid CinemaHallRequestDto cinemaHallRequestDto) {
         CinemaHall cinemaHall = new CinemaHall();
-        cinemaHall.setCapacity(cinemaHallDto.getCapacity());
-        cinemaHall.setDescription(cinemaHallDto.getDescription());
+        cinemaHall.setCapacity(cinemaHallRequestDto.getCapacity());
+        cinemaHall.setDescription(cinemaHallRequestDto.getDescription());
         cinemaHallService.add(cinemaHall);
     }
 
     @GetMapping
-    public List<CinemaHallDto> getAllCinemaHalls() {
+    public List<CinemaHallRequestDto> getAllCinemaHalls() {
         return cinemaHallService.getAll()
                 .stream()
                 .map(this::migrateToDto)
                 .collect(Collectors.toList());
     }
 
-    private CinemaHallDto migrateToDto(CinemaHall cinemaHall) {
-        CinemaHallDto cinemaHallDto = new CinemaHallDto();
-        cinemaHallDto.setCapacity(cinemaHall.getCapacity());
-        cinemaHallDto.setDescription(cinemaHall.getDescription());
-        return cinemaHallDto;
+    private CinemaHallRequestDto migrateToDto(CinemaHall cinemaHall) {
+        CinemaHallRequestDto cinemaHallRequestDto = new CinemaHallRequestDto();
+        cinemaHallRequestDto.setCapacity(cinemaHall.getCapacity());
+        cinemaHallRequestDto.setDescription(cinemaHall.getDescription());
+        return cinemaHallRequestDto;
     }
 }

@@ -3,14 +3,14 @@ package com.dev.cinema.dto;
 import java.util.List;
 
 public class ShoppingCartResponseDto {
-    private List<TicketDto> tickets;
+    private List<TicketResponseDto> tickets;
     private String userEmail;
 
-    public List<TicketDto> getTickets() {
+    public List<TicketResponseDto> getTickets() {
         return tickets;
     }
 
-    public void setTickets(List<TicketDto> tickets) {
+    public void setTickets(List<TicketResponseDto> tickets) {
         this.tickets = tickets;
     }
 

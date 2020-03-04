@@ -1,6 +1,9 @@
 package com.dev.cinema.dto;
 
+import javax.validation.constraints.NotEmpty;
+
 public class UserResponseDto {
+    @NotEmpty
     private String email;
 
     public String getEmail() {

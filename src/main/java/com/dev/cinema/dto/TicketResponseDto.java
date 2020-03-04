@@ -1,6 +1,6 @@
 package com.dev.cinema.dto;
 
-public class TicketDto {
+public class TicketResponseDto {
     private String movieTitle;
     private String showTime;
     private Long cinemaHallId;
