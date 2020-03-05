@@ -16,6 +16,7 @@ public class PasswordValidator implements
     @Override
     public boolean isValid(UserRegisterRequestDto userRegisterRequestDto,
                            ConstraintValidatorContext constraintValidatorContext) {
-        return userRegisterRequestDto.getPassword().equals(userRegisterRequestDto.getRepeatPassword());
+        return userRegisterRequestDto.getPassword()
+                .equals(userRegisterRequestDto.getRepeatPassword());
     }
 }
