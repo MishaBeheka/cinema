@@ -1,21 +1,21 @@
 package com.dev.cinema.security.validation;
 
 import com.dev.cinema.annotations.PasswordValidate;
-import com.dev.cinema.dto.UserRequestDto;
+import com.dev.cinema.dto.UserRegisterRequestDto;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 public class PasswordValidator implements
-        ConstraintValidator<PasswordValidate, UserRequestDto> {
+        ConstraintValidator<PasswordValidate, UserRegisterRequestDto> {
     @Override
     public void initialize(PasswordValidate constraintAnnotation) {
 
     }
 
     @Override
-    public boolean isValid(UserRequestDto userRequestDto,
+    public boolean isValid(UserRegisterRequestDto userRegisterRequestDto,
                            ConstraintValidatorContext constraintValidatorContext) {
-        return userRequestDto.getPassword().equals(userRequestDto.getRepeatPassword());
+        return userRegisterRequestDto.getPassword().equals(userRegisterRequestDto.getRepeatPassword());
     }
 }
