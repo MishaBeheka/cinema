@@ -1,8 +1,10 @@
 package com.dev.cinema.dto;
 
 import com.dev.cinema.annotations.EmailValidate;
+import com.dev.cinema.annotations.PasswordValidate;
 import javax.validation.constraints.NotEmpty;
 
+@PasswordValidate
 public class UserRegisterRequestDto {
     @NotEmpty
     @EmailValidate
