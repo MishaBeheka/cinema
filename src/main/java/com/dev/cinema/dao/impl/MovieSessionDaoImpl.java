@@ -3,10 +3,8 @@ package com.dev.cinema.dao.impl;
 import com.dev.cinema.dao.MovieSessionDao;
 import com.dev.cinema.exceptoin.DataProcessingException;
 import com.dev.cinema.model.MovieSession;
-
 import java.time.LocalDate;
 import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
