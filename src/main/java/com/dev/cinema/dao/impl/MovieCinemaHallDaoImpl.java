@@ -3,11 +3,8 @@ package com.dev.cinema.dao.impl;
 import com.dev.cinema.dao.MovieCinemaHallDao;
 import com.dev.cinema.exceptoin.DataProcessingException;
 import com.dev.cinema.model.CinemaHall;
-
 import java.util.List;
-
 import javax.persistence.criteria.CriteriaQuery;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

@@ -44,7 +44,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin()
+                .formLogin().disable()
+                .httpBasic()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
     }

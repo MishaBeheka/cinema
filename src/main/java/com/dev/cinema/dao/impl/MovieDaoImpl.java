@@ -3,9 +3,7 @@ package com.dev.cinema.dao.impl;
 import com.dev.cinema.dao.MovieDao;
 import com.dev.cinema.exceptoin.DataProcessingException;
 import com.dev.cinema.model.Movie;
-
 import java.util.List;
-
 import javax.persistence.criteria.CriteriaQuery;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

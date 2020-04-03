@@ -2,12 +2,9 @@ package com.dev.cinema.controllers;
 
 import com.dev.cinema.dto.UserLoginRequestDto;
 import com.dev.cinema.dto.UserRegisterRequestDto;
-
 import com.dev.cinema.exceptoin.AuthenticationException;
 import com.dev.cinema.service.impl.AuthenticationServiceImpl;
-
 import javax.validation.Valid;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.PostMapping;

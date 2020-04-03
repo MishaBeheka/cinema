@@ -6,10 +6,8 @@ import com.dev.cinema.model.Ticket;
 import com.dev.cinema.model.User;
 import com.dev.cinema.service.OrderService;
 import com.dev.cinema.service.ShoppingCartService;
-
 import java.time.LocalDateTime;
 import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 @Service

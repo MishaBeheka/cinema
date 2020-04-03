@@ -1,10 +1,8 @@
 package com.dev.cinema.security.validation;
 
 import com.dev.cinema.annotations.EmailValidate;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 

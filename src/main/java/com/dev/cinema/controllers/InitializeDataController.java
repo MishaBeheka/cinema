@@ -4,9 +4,7 @@ import com.dev.cinema.model.Role;
 import com.dev.cinema.model.User;
 import com.dev.cinema.service.RoleService;
 import com.dev.cinema.service.UserService;
-
 import javax.annotation.PostConstruct;
-
 import org.springframework.stereotype.Service;
 
 @Service
