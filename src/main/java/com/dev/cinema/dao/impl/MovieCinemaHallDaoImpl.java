@@ -32,7 +32,7 @@ public class MovieCinemaHallDaoImpl implements MovieCinemaHallDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't insert CinemaHall entity", e);
+            throw new DataProcessingException("Can't insert CinemaHall entity ", e);
         }
     }
 
@@ -41,7 +41,7 @@ public class MovieCinemaHallDaoImpl implements MovieCinemaHallDao {
         try (Session session = sessionFactory.openSession()) {
             return session.get(CinemaHall.class, id);
         } catch (Exception e) {
-            throw new RuntimeException("Can't find CinemaHAll with ID " + id, e);
+            throw new DataProcessingException("Can't find CinemaHAll with ID " + id, e);
         }
     }
 

@@ -33,7 +33,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't create Shopping-Cart ", e);
+            throw new DataProcessingException("Can't create Shopping-Cart ", e);
         }
     }
 

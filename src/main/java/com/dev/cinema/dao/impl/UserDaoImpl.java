@@ -31,7 +31,7 @@ public class UserDaoImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't insert User entity ", e);
+            throw new DataProcessingException("Can't insert User entity ", e);
         }
     }
 
@@ -40,7 +40,7 @@ public class UserDaoImpl implements UserDao {
         try (Session session = sessionFactory.openSession()) {
             return session.get(User.class, id);
         } catch (Exception e) {
-            throw new RuntimeException("Can't find User with ID " + id, e);
+            throw new DataProcessingException("Can't find User with ID " + id, e);
         }
     }
 
