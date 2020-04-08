@@ -27,9 +27,9 @@ public class MovieDaoImpl implements MovieDao {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
-            Long itemId = (Long) session.save(movie);
+            Long rowId = (Long) session.save(movie);
             transaction.commit();
-            movie.setId(itemId);
+            movie.setId(rowId);
             return movie;
         } catch (Exception e) {
             if (transaction != null) {

@@ -24,9 +24,9 @@ public class MovieCinemaHallDaoImpl implements MovieCinemaHallDao {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
-            Long itemId = (Long) session.save(cinemaHall);
+            Long rowId = (Long) session.save(cinemaHall);
             transaction.commit();
-            cinemaHall.setId(itemId);
+            cinemaHall.setId(rowId);
             return cinemaHall;
         } catch (Exception e) {
             if (transaction != null) {
