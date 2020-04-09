@@ -24,15 +24,15 @@ public class MovieCinemaHallDaoImpl implements MovieCinemaHallDao {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
-            Long itemId = (Long) session.save(cinemaHall);
+            Long rowId = (Long) session.save(cinemaHall);
             transaction.commit();
-            cinemaHall.setId(itemId);
+            cinemaHall.setId(rowId);
             return cinemaHall;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't insert CinemaHall entity", e);
+            throw new DataProcessingException("Can't insert CinemaHall entity ", e);
         }
     }
 
@@ -41,7 +41,7 @@ public class MovieCinemaHallDaoImpl implements MovieCinemaHallDao {
         try (Session session = sessionFactory.openSession()) {
             return session.get(CinemaHall.class, id);
         } catch (Exception e) {
-            throw new RuntimeException("Can't find CinemaHAll with ID " + id, e);
+            throw new DataProcessingException("Can't find CinemaHAll with ID " + id, e);
         }
     }
 

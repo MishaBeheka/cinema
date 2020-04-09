@@ -1,6 +1,7 @@
 package com.dev.cinema.dao.impl;
 
 import com.dev.cinema.dao.TicketDao;
+import com.dev.cinema.exceptoin.DataProcessingException;
 import com.dev.cinema.model.Ticket;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -29,7 +30,7 @@ public class TicketDaoImpl implements TicketDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't save ticket ", e);
+            throw new DataProcessingException("Can't save ticket ", e);
         }
     }
 }

@@ -27,15 +27,16 @@ public class MovieDaoImpl implements MovieDao {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
-            Long itemId = (Long) session.save(movie);
+            Long rowId = (Long) session.save(movie);
             transaction.commit();
-            movie.setId(itemId);
+            movie.setId(rowId);
             return movie;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't insert Movie entity", e);
+            LOGGER.info("Can't insert Movie entity " + movie);
+            throw new DataProcessingException("Can't insert Movie entity", e);
         }
     }
 
@@ -44,7 +45,8 @@ public class MovieDaoImpl implements MovieDao {
         try (Session session = sessionFactory.openSession()) {
             return session.get(Movie.class, id);
         } catch (Exception e) {
-            throw new RuntimeException("Can't find Movie with ID " + id, e);
+            LOGGER.info("Can't find Movie with ID " + id);
+            throw new DataProcessingException("Can't find Movie with ID " + id, e);
         }
     }
 
@@ -56,6 +58,7 @@ public class MovieDaoImpl implements MovieDao {
             criteriaQuery.from(Movie.class);
             return session.createQuery(criteriaQuery).getResultList();
         } catch (Exception e) {
+            LOGGER.info("Error retrieving all movies");
             throw new DataProcessingException("Error retrieving all movies ", e);
         }
     }

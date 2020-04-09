@@ -7,11 +7,12 @@ import com.dev.cinema.service.impl.AuthenticationServiceImpl;
 import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
-@RestController
+@Controller
 public class AuthenticationController {
 
     private static final Logger LOGGER = LogManager.getLogger(AuthenticationController.class);
@@ -22,23 +23,33 @@ public class AuthenticationController {
         this.authenticationService = authenticationService;
     }
 
+    @GetMapping(value = "/register")
+    public String showRegisterForm() {
+        return "registration";
+    }
+
     @PostMapping(value = "/register")
-    public String registration(@RequestBody @Valid UserRegisterRequestDto userRegisterRequestDto) {
+    public RedirectView registration(@Valid UserRegisterRequestDto userRegisterRequestDto) {
         authenticationService.register(userRegisterRequestDto.getEmail(),
                 userRegisterRequestDto.getPassword());
-        return "Registration successful";
+        return new RedirectView("/index");
+    }
+
+    @GetMapping(value = "/login")
+    public String showLoginForm() {
+        return "loginForm";
     }
 
     @PostMapping(value = "/login")
-    public String login(@RequestBody UserLoginRequestDto userLoginRequestDto) {
+    public RedirectView login(UserLoginRequestDto userLoginRequestDto) {
         try {
             authenticationService.login(userLoginRequestDto.getEmail(),
                     userLoginRequestDto.getPassword());
         } catch (AuthenticationException e) {
             LOGGER.error("Login or password is incorrect " + e);
-            return "Login or password is incorrect";
+            return new RedirectView("/login");
         }
         LOGGER.info("Authorization successful " + userLoginRequestDto.getEmail());
-        return "Authorization successful";
+        return new RedirectView("/index");
     }
 }
