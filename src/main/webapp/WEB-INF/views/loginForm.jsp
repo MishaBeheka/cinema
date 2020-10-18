@@ -4,17 +4,17 @@
 <html>
 <head>
     <title>Login Form</title>
-    <style>
-        form {
-        /*    display: flex; // FlexBox*/
-        /*align-items: center; // выравнивает по вертикали*/
-        /*justify-content: center;*/
-        }
-    </style>
 </head>
+
+<style>
+    .text-center {
+        margin-top: revert;
+    }
+</style>
+
 <body>
 <form action="${pageContext.request.contextPath}/login" style="text-align: center" method="post">
-    <div class="container col-lg-4 border" style="border-radius: 20px">
+    <div class="container col-lg-4 border" style="border-radius: 20px; margin-top: 130px">
         <h1 class="text-center">LOGIN</h1>
         <p class="text-center">Please fill in this form to sign into account.</p>
         <hr>
