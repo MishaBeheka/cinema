@@ -12,7 +12,7 @@
 </style>
 <body>
 <form class="form-group" action="${pageContext.request.contextPath}/register" style="text-align: center" method=post>
-    <div class="container col-lg-4 border" style="border-radius: 20px; margin-top: 150px">
+    <div class="container col-lg-4 border" style="border-radius: 20px; margin-top: 130px">
         <h2 class="text-center">REGISTRATION</h2>
         <p class="text-center">Please fill in this form to create an account.</p>
         <hr>
