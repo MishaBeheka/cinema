@@ -32,7 +32,7 @@ public class AuthenticationController {
     public RedirectView registration(@Valid UserRegisterRequestDto userRegisterRequestDto) {
         authenticationService.register(userRegisterRequestDto.getEmail(),
                 userRegisterRequestDto.getPassword());
-        return new RedirectView("/index");
+        return new RedirectView("/");
     }
 
     @GetMapping(value = "/login")
@@ -50,6 +50,6 @@ public class AuthenticationController {
             return new RedirectView("/login");
         }
         LOGGER.info("Authorization successful " + userLoginRequestDto.getEmail());
-        return new RedirectView("/index");
+        return new RedirectView("/");
     }
 }
