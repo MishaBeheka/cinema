@@ -1,6 +1,11 @@
 package com.dev.cinema.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "movie")
@@ -12,7 +17,7 @@ public class Movie {
     private String title;
     private String description;
     @OneToOne
-    private DBFile dbFile;
+    private DbFile dbFile;
 
     public Long getId() {
         return id;
@@ -38,11 +43,11 @@ public class Movie {
         this.description = description;
     }
 
-    public DBFile getDbFile() {
+    public DbFile getDbFile() {
         return dbFile;
     }
 
-    public void setDbFile(DBFile dbFile) {
+    public void setDbFile(DbFile dbFile) {
         this.dbFile = dbFile;
     }
 
