@@ -4,9 +4,15 @@
 <head>
     <title>Registration</title>
 </head>
+
+<style>
+    .text-center {
+        margin-top: revert;
+    }
+</style>
 <body>
 <form class="form-group" action="${pageContext.request.contextPath}/register" style="text-align: center" method=post>
-    <div class="container col-lg-4 border" style="border-radius: 20px">
+    <div class="container col-lg-4 border" style="border-radius: 20px; margin-top: 150px">
         <h2 class="text-center">REGISTRATION</h2>
         <p class="text-center">Please fill in this form to create an account.</p>
         <hr>
@@ -26,10 +32,10 @@
             <input type="password" class="form-control" placeholder="Repeat Password" name="repeatPassword" id="repeatPassword" required>
         </div>
         <hr>
-        <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
-
+        <div>
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
         <div class="container singin">
-            <p>Already have an account? <a href="/login">Sign in</a>.</p>
+            <p>Already have an account? <a href="${pageContext.request.contextPath}/login">Sign in</a>.</p>
         </div>
     </div>
 </form>
