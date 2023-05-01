@@ -4,7 +4,7 @@ import com.dev.cinema.dto.UserLoginRequestDto;
 import com.dev.cinema.dto.UserRegisterRequestDto;
 import com.dev.cinema.exceptoin.AuthenticationException;
 import com.dev.cinema.service.impl.AuthenticationServiceImpl;
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;

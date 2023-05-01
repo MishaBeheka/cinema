@@ -1,6 +1,7 @@
 package com.dev.cinema.dto;
 
-import javax.validation.constraints.NotEmpty;
+
+import jakarta.validation.constraints.NotEmpty;
 
 public class MovieResponseDto {
     @NotEmpty
